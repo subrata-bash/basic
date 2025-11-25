@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-content text-muted bg-white">
+                            <div class="text-muted bg-white">
                                 <div class="tab-pane pt-4 active show" id="profile_setting" role="tabpanel"
                                     aria-labelledby="setting_tab">
                                     <div class="row">
