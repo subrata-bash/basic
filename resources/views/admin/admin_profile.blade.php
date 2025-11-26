@@ -18,7 +18,7 @@
 
                             <div class="align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ !empty($profileData->photo) ? url('upload/user_images' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                    <img src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                         class="rounded-circle avatar-xxl img-thumbnail float-start" alt="image profile">
 
                                     <div class="overflow-hidden ms-4">
@@ -43,7 +43,8 @@
                                                             </div><!--end col-->
                                                         </div>
                                                     </div>
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('admin.profile.store') }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="card-body">
                                                             <div class="form-group mb-3 row">
@@ -101,7 +102,7 @@
                                                                 <label class="form-label"></label>
                                                                 <div class="col-lg-12 col-xl-12">
                                                                     <img id="showImage"
-                                                                        src="{{ !empty($profileData->photo) ? url('upload/user_images' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                                                        src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                                                         class="rounded-circle avatar-xxl img-thumbnail float-start"
                                                                         alt="image profile">
                                                                 </div>
