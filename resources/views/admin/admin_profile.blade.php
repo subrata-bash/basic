@@ -121,6 +121,7 @@
                                             </div>
 
                                             <div class="col-lg-6 col-xl-6">
+
                                                 <div class="card border mb-0">
 
                                                     <div class="card-header">
@@ -130,41 +131,57 @@
                                                             </div><!--end col-->
                                                         </div>
                                                     </div>
+                                                    <form action="{{ route('admin.password.update') }}" method="POST">
+                                                        @csrf
+                                                        <div class="card-body mb-0">
+                                                            <div class="form-group mb-3 row">
+                                                                <label class="form-label">Old Password</label>
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <input
+                                                                        class="form-control @error('old_password') is-invalid @enderror"
+                                                                        type="password" name="old_password"
+                                                                        placeholder="Old Password">
+                                                                    @error('old_password')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-3 row">
+                                                                <label class="form-label">New Password</label>
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <input
+                                                                        class="form-control @error('new_password') is-invalid @enderror"
+                                                                        type="password" name="new_password"
+                                                                        placeholder="New Password">
+                                                                    @error('new_password')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb-3 row">
+                                                                <label class="form-label">Confirm Password</label>
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <input
+                                                                        class="form-control @error('new_password_confirmation') is-invalid @enderror"
+                                                                        type="password" name="new_password_confirmation"
+                                                                        placeholder="Confirm Password">
+                                                                    @error('new_password_confirmation')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
 
-                                                    <div class="card-body mb-0">
-                                                        <div class="form-group mb-3 row">
-                                                            <label class="form-label">Old Password</label>
-                                                            <div class="col-lg-12 col-xl-12">
-                                                                <input class="form-control" type="password"
-                                                                    placeholder="Old Password">
+                                                            <div class="form-group row">
+                                                                <div class="col-lg-12 col-xl-12">
+                                                                    <button type="submit" class="btn btn-primary">Change
+                                                                        Password</button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group mb-3 row">
-                                                            <label class="form-label">New Password</label>
-                                                            <div class="col-lg-12 col-xl-12">
-                                                                <input class="form-control" type="password"
-                                                                    placeholder="New Password">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group mb-3 row">
-                                                            <label class="form-label">Confirm Password</label>
-                                                            <div class="col-lg-12 col-xl-12">
-                                                                <input class="form-control" type="password"
-                                                                    placeholder="Confirm Password">
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="form-group row">
-                                                            <div class="col-lg-12 col-xl-12">
-                                                                <button type="submit" class="btn btn-primary">Change
-                                                                    Password</button>
-                                                                <button type="button"
-                                                                    class="btn btn-danger">Cancel</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--end card-body-->
+                                                        </div><!--end card-body-->
+                                                    </form>
                                                 </div>
+
                                             </div>
 
                                         </div>

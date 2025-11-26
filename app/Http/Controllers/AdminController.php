@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -55,6 +56,33 @@ class AdminController extends Controller
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);
+    }
+    public function adminPasswordUpdate(Request $request)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            $notification = [
+                'message' => 'Old Password does not match!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        User::whereId($user->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        Auth::logout();
+
+        $notification = [
+            'message' => 'Password Updated Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->route('login')->with($notification);
     }
     private function deleteOldImage($oldPhotoPath)
     {
