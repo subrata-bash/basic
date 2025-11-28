@@ -46,4 +46,52 @@ class ReviewController extends Controller
         return redirect()->route('all.review')->with($notification);
 
     }
+
+    public function editReview($id)
+    {
+        $review = Review::findOrFail($id);
+        return view('admin.backend.review.edit_review', compact('review'));
+    }
+
+    public function updateReview(Request $request)
+    {
+        $rev_id = $request->id;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $nameGen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $img = $manager->read($image);
+            $img->resize(60, 60)->save('upload/review/' . $nameGen);
+            $save_url = 'upload/review/' . $nameGen;
+
+            Review::findOrFail($rev_id)->update([
+                'name' => $request->name,
+                'position' => $request->position,
+                'message' => $request->message,
+                'image' => $save_url,
+            ]);
+            $notification = array(
+                'message' => 'Review Added With Image Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('all.review')->with($notification);
+        } else {
+            Review::findOrFail($rev_id)->update([
+                'name' => $request->name,
+                'position' => $request->position,
+                'message' => $request->message,
+
+            ]);
+            $notification = array(
+                'message' => 'Review Added Without Image Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('all.review')->with($notification);
+        }
+
+
+    }
 }

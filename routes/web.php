@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
        Route::get('/all/review', 'allReview')->name('all.review');
        Route::get('/add/review', 'addReview')->name('add.review');
        Route::post('/store/review', 'storeReview')->name('store.review');
+       Route::get('/edit/review/{id}', 'editReview')->name('edit.review');
+       Route::post('/update/review', 'updateReview')->name('update.review');
    });
 });
 

@@ -35,7 +35,7 @@
                                         <td><img src="{{ asset($review->image) }}" alt="{{ $review->name }}" style="width: 70px; height: 40px" /></td>
                                         <td>{{ Str::limit($review->message, 30, '...') }}</td>
                                         <td>
-                                            <a href="" class="btn btn-success btn-sm">Edit</a>
+                                            <a href="{{ route('edit.review', $review->id) }}" class="btn btn-success btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
