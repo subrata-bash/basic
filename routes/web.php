@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
    Route::controller(ReviewController::class)->group(function () {
        Route::get('/all/review', 'allReview')->name('all.review');
+       Route::get('/add/review', 'addReview')->name('add.review');
    });
 });
 
