@@ -22,15 +22,7 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-xl-12">
                                                 <div class="card border mb-0">
-
-                                                    <div class="card-header">
-                                                        <div class="row align-items-center">
-                                                            <div class="col">
-                                                                <h4 class="card-title mb-0">Personal Information</h4>
-                                                            </div><!--end col-->
-                                                        </div>
-                                                    </div>
-                                                    <form action="{{ route('admin.profile.store') }}" method="POST"
+                                                    <form action="{{ route('store.review') }}" method="POST"
                                                           enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="card-body">
@@ -59,7 +51,7 @@
                                                                 <label class="form-label">Photo</label>
                                                                 <div class="col-lg-12 col-xl-12">
                                                                     <input id="image" class="form-control"
-                                                                           name="photo" type="file">
+                                                                           name="image" type="file">
                                                                 </div>
                                                             </div>
 
@@ -75,8 +67,7 @@
 
                                                             <div class="form-group row">
                                                                 <div class="col-lg-12 col-xl-12">
-                                                                    <button type="submit" class="btn btn-primary">Update
-                                                                        Changes</button>
+                                                                    <button type="submit" class="btn btn-primary">Add Review</button>
                                                                 </div>
                                                             </div>
 

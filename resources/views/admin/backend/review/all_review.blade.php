@@ -29,12 +29,11 @@
                                 <tbody>
                                 @foreach($reviews as $review)
                                     <tr>
-                                        <td>{{ $loop+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $review->name }}</td>
                                         <td>{{ $review->position }}</td>
                                         <td><img src="{{ asset($review->image) }}" alt="{{ $review->name }}" style="width: 70px; height: 40px" /></td>
-                                        <td>2023-08-10</td>
-                                        <td>{{ $review->message }}</td>
+                                        <td>{{ Str::limit($review->message, 30, '...') }}</td>
                                         <td>
                                             <a href="" class="btn btn-success btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm">Delete</a>
