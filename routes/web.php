@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,10 @@ Route::middleware('auth')->group(function () {
    });
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('/get/slider', 'getSlider')->name('get.slider');
+    });
+});
 require __DIR__ . '/auth.php';
